@@ -1,1 +1,27 @@
 Hello this is cursor
+
+Smart Notification Agent CLI
+
+Setup
+1) Create and activate a Python 3.10+ environment
+2) Install dependencies:
+   pip install -r requirements.txt
+3) Copy and edit environment variables:
+   cp .env.example .env
+
+Usage
+- From file:
+   python smart_notify.py path/to/email.txt --provider openai
+- From stdin:
+   cat email.txt | python smart_notify.py --provider anthropic
+
+Output format (single line):
+makefile
+Summary: <summary> Category: <category> Urgency: <urgency> Action: <yes/no>
+
+Provider selection
+- Set MODEL_PROVIDER env or use --provider flag: openai | anthropic | mistral
+- API keys via env: OPENAI_API_KEY, ANTHROPIC_API_KEY, MISTRAL_API_KEY
+
+Optional: Google Sheets via Bolt
+- Set BOLT_SHEETS_ENABLED=1 and BOLT_SHEETS_URL (and optional BOLT_SHEETS_AUTH_BEARER) to push results.
